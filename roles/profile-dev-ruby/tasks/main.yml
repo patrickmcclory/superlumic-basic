@@ -11,6 +11,22 @@
   register: rbenv_install_result
   changed_when: "'' == rbenv_install_result.stdout"
 
+- name: Create .bash_profile if not exists
+  command: "touch {{ home_dir }}/.bash_profile"
+  args:
+    creates: "{{ home_dir }}/.bash_profile"
+
+- name: add rbenv to path properly via .bash_profile
+  become: yes
+  lineinfile: >
+    dest="{{home_dir}}/.bash_profile"
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    state=present
+    create=true
+  with_items:
+    - { regexp: "^eval ", line: "eval \"$(rbenv init - )\"" }
+
 - name: check if {{ rbenv.ruby_version }} is the default ruby version
   shell: ~/.rbenv/bin/rbenv global | grep -e '{{ rbenv.ruby_version }}'
   register: rbenv_check_default
