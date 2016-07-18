@@ -18,7 +18,7 @@
 - name: install dev cask applications
   homebrew_cask: name={{item}} state=present
   with_items:
-    - dockertoolbox
+    - docker
     - atom
     - gpgtools
     - hosts
