@@ -1,0 +1,23 @@
+---
+
+- name: tap caskroom/versions
+  homebrew_tap: tap=caskroom/versions state=present
+
+- name: install developer brew applications
+  homebrew: name={{item}} state=latest
+  with_items:
+    - wget
+    - curl
+
+- name: install personal cask applications
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - google-chrome
+    - firefox
+    - box-sync
+    - slack
+    - evernote
+    - xmind
+    - the-unarchiver
+    - appcleaner
+    - caffeine

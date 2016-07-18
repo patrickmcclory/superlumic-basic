@@ -1,0 +1,20 @@
+---
+
+- name: tap caskroom/versions
+  homebrew_tap: tap=caskroom/versions state=present
+
+- name: install developer brew applications
+  homebrew: name={{item}} state=latest
+  with_items:
+    - wget
+    - awscli
+
+- name: install developer cask applications
+  homebrew_cask: name={{item}} state=present
+  with_items:
+    - python3
+    - vagrant
+    - virtualbox
+    - python
+    - packer
+    - terraform

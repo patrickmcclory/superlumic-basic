@@ -1,0 +1,20 @@
+---
+
+- name: tap caskroom/versions
+  homebrew_tap: tap=caskroom/versions state=present
+
+- name: install java runtime cask applications
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    - java
+
+- name: install java dev brew applications
+  homebrew: name={{ item }} state=latest
+  with_items:
+    - ant
+    - gradle
+    - maven
+
+- name: install java IDE cask applications
+  homebrew_cask: name={{ item }} state=present
+  with_items: "{{ install_ides }}"
