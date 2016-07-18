@@ -16,3 +16,7 @@
   with_items:
     - go
     - gobject-introspection
+
+- name: install Golang IDE cask applications
+  homebrew_cask: name={{ item }} state=present
+  with_items: "{{ install_ides }}"

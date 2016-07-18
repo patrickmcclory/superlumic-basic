@@ -8,12 +8,18 @@
     - autoconf
     - automake
     - bash-completion
+    - docker-machine-driver-xhyve
     - coreutils
     - htop-osx
     - netcat
     - nmap
     - tmux
     - jq
+
+- name: Download and install minikube
+  command: "curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.6.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/"
+  args:
+    creates: "/usr/local/bin/minikube"
 
 - name: install dev cask applications
   homebrew_cask: name={{item}} state=present
@@ -23,3 +29,5 @@
     - gpgtools
     - hosts
     - keybase
+    - virtualbox
+    - virtualbox-extension-pack
