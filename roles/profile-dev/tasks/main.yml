@@ -17,12 +17,12 @@
     - jq
 
 - name: Download and install minikube
-  command: "curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.6.0/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/"
+  command: "curl -Lo minikube https://storage.googleapis.com/minikube/releases/v{{ minikube_version }}/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/"
   args:
     creates: "/usr/local/bin/minikube"
 
 - name: Download and install Kubectl
-  command: "curl -O https://storage.googleapis.com/kubernetes-release/release/v1.2.4/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/"
+  command: "curl -O https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/"
   args:
     creates: "/usr/local/bin/kubectl"
 
