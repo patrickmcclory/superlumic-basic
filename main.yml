@@ -20,3 +20,5 @@
     - profile-dev-python
     - profile-dev-golang
     - profile-dev-ruby
+    - profile-dev-node
+    - profile-dev-java
