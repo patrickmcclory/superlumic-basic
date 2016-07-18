@@ -1,12 +1,13 @@
 ---
 
-- name: install developer brew applications
+- name: install dev brew applications
   homebrew: name={{item}} state=latest
   with_items:
     - git
     - git-extras
     - autoconf
     - automake
+    - bash-completion
     - coreutils
     - htop-osx
     - netcat
@@ -14,13 +15,11 @@
     - tmux
     - jq
 
-- name: install developer cask applications
+- name: install dev cask applications
   homebrew_cask: name={{item}} state=present
   with_items:
     - dockertoolbox
     - atom
-    - bash
-    - bash-completion
     - gpgtools
     - hosts
     - keybase
