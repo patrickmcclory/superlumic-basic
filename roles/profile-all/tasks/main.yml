@@ -1,5 +1,16 @@
 ---
 
+- name: create ssh directory
+  become: yes
+  file:
+    path: "{{item}}"
+    state: directory
+    owner: root
+    group: wheel
+    mode: 0777
+  with_items:
+    - /etc/ssh
+
 - name: install general brew applications
   homebrew: name={{item}} state=latest
   with_items:
