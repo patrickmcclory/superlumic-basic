@@ -21,6 +21,11 @@
   args:
     creates: "/usr/local/bin/minikube"
 
+- name: Download and install Kubectl
+  command: "curl -O https://storage.googleapis.com/kubernetes-release/release/v1.2.4/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/"
+  args:
+    creates: "/usr/local/bin/kubectl"
+
 - name: install dev cask applications
   homebrew_cask: name={{item}} state=present
   with_items:
