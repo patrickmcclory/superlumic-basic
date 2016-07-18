@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Patrick McClory
+  description: Ansible profile role for AWS-secific devloper workstations.
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+    - name: Darwin
+      versions:
+        - all
+  categories:
+    - system
+dependencies:
+  - roderik.superlumic-homebrew
