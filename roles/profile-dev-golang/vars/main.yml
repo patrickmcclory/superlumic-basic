@@ -1,3 +1,7 @@
 ---
 
 home_dir: "/Users/{{ ansible_user_id }}"
+
+install_ides:
+  - intellij-idea
+#  - eclipse-java
