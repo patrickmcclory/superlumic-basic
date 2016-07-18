@@ -25,7 +25,7 @@
     state=present
     create=true
   with_items:
-    - { regexp: "^eval ", line: "eval \"$(rbenv init - )\"" }
+    - { regexp: "^eval ", line: "eval \"$(~/.rbenv/bin/rbenv init - )\"" }
 
 - name: check if {{ rbenv.ruby_version }} is the default ruby version
   shell: ~/.rbenv/bin/rbenv global | grep -e '{{ rbenv.ruby_version }}'
