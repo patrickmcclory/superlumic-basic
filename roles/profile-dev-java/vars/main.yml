@@ -2,4 +2,4 @@
 
 install_ides:
   - intellij-idea
-  - eclipse-java
+#  - eclipse-java

@@ -11,6 +11,23 @@
   with_items:
     - /etc/ssh
 
+- name: personal ssh config
+  become: yes
+  copy:
+    src: files/ssh_config
+    dest: /etc/ssh_config
+- name: add to sudoers without password
+  become: yes
+  lineinfile: >
+    dest=/etc/sudoers
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    state=present
+    create=true
+  with_items:
+    - { regexp: "^{{ ansible_user_id }}", line: "{{ ansible_user_id }} ALL=(ALL) NOPASSWD: ALL" }
+
+
 - name: install general brew applications
   homebrew: name={{item}} state=latest
   with_items:

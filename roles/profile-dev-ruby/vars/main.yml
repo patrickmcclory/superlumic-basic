@@ -1,4 +1,4 @@
 ---
-
+home_dir: "/Users/{{ ansible_user_id }}"
 rbenv:
   ruby_version: '2.3.1'
