@@ -1,3 +1,6 @@
 ---
 kubectl_version: "1.3.0"
+kubectl_checksum: "BA0720FF87A801FE96CB1E673074C429"
+
 minikube_version: "0.6.0"
+minikube_checksum: "444BEF29D0A0D7FBB340C73560EC0773"

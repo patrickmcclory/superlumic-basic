@@ -16,15 +16,11 @@
     - tmux
     - jq
 
-- name: Download and install minikube
-  command: "curl -Lo minikube https://storage.googleapis.com/minikube/releases/v{{ minikube_version }}/minikube-darwin-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/"
-  args:
-    creates: "/usr/local/bin/minikube"
+- name: Download and place minikube in proper path
+  get_url: url="https://storage.googleapis.com/minikube/releases/v{{ minikube_version }}/minikube-darwin-amd64" dest=/usr/local/bin/minikube mode=0755
 
-- name: Download and install Kubectl
-  command: "curl -O https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/darwin/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/"
-  args:
-    creates: "/usr/local/bin/kubectl"
+- name: Download and place kubectl in proper path
+  get_url: url="https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/darwin/amd64/kubectl" dest=/usr/local/bin/kubectl mode=0755
 
 - name: install dev cask applications
   homebrew_cask: name={{item}} state=present
