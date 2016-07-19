@@ -37,6 +37,7 @@
     - name: install indiivudal apps via brew casks
       homebrew_cask: name={{item}} state=present
       with_items:
+        - ax88179
         - owncloud
         - lastpass
 
